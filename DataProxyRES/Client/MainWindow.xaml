@@ -1,0 +1,26 @@
+﻿<Window x:Class="Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Client"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" ResizeMode="NoResize" Closing="Window_Closing">
+    <Grid>
+
+        <DatePicker Name="datePickerFrom" HorizontalAlignment="Left" Margin="50,10,0,0" VerticalAlignment="Top" SelectedDate="{Binding DtFrom}" SelectedDateChanged="datePicker_SelectedDateChanged"/>
+        <DatePicker Name="datePickerTo" HorizontalAlignment="Left" Margin="211,10,0,0" VerticalAlignment="Top" SelectedDate="{Binding DtTo}" SelectedDateChanged="datePicker_SelectedDateChanged"/>
+        <Label Content="From" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="To" HorizontalAlignment="Left" Margin="185,9,0,0" VerticalAlignment="Top"/>
+        <Button Name="btnShow" Content="Show" HorizontalAlignment="Left" Margin="343,9,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="Button_Click_Show"/>
+        <Button Content="Exit" HorizontalAlignment="Left" Margin="432,9,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="Button_Click_Exit"/>
+        <DataGrid Name="dataGrid" HorizontalAlignment="Left" IsReadOnly="True" AutoGenerateColumns="False" Height="256" Margin="10,53,0,0" VerticalAlignment="Top" Width="497" VerticalScrollBarVisibility="Visible" ItemsSource="{Binding ShowDB}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Timestamp" Width="1.75*" Binding="{Binding Hour}"/>
+                <DataGridTextColumn Header="Geographic area" Width="1.25*" Binding="{Binding Area}"/>
+                <DataGridTextColumn Header="Power consumption (MW/h)" Width="1.5*" Binding="{Binding Consumption}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Name="lblGreska" Foreground="Red" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="52,27,0,0" VerticalAlignment="Top" Width="261"/>
+    </Grid>
+</Window>
